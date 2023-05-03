@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthentificationService} from './service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'waytogoo';
+  title = 'Fitri9k2';
+  constructor(private authservice: AuthentificationService) {
+
+  }
+
+  ngOnInit(): void {
+
+     // this.authservice.loadToken();
+
+  }
+
 }

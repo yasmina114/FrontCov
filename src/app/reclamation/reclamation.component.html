@@ -1,0 +1,72 @@
+<section class="tj-account-frm">
+  <div class="content">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+
+
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+
+              <h3 class="heading mb-4">Parlons de tout !</h3>
+
+
+              <p><img src="assets/images/a.jpg" alt="Image" class="img-fluid"></p>
+
+
+            </div>
+            <div class="col-md-6">
+              <form [formGroup]="registerForm" class="mb-5" method="post" id="contactForm"
+                    name="contactForm">
+
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" name="name" id="name" [value]="user?.username">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <input type="text" class="form-control" name="email" id="email" [value]="user?.email">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <input type="text" name="subject" placeholder="" formControlName="titre" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.titre.errors }"/>
+                    <div *ngIf="submitted && f.titre.errors" class="invalid-feedback">
+                      <div *ngIf="f.titre.errors.required" class="errors">First Name is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                  <textarea class="form-control" name="message"
+                            cols="30" rows="7" placeholder="Votre Message"
+                            style=" height:70px ;padding: 6px;margin-bottom: 30px" id="message" formControlName="sujet"
+                            [ngClass]="{ 'is-invalid': submitted && f.sujet.errors }"></textarea>
+                    <div *ngIf="submitted && f.sujet.errors" class="invalid-feedback">
+                      <div *ngIf="f.sujet.errors.required" class="errors">Ce champ est obligatoire</div>
+                    </div>
+
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12" (click)="addreclamation()">
+                    <input type="submit" value="Send Message" class="btn btn-primary rounded-0 py-2 px-4">
+                    <span class="submitting"></span>
+                  </div>
+                </div>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+

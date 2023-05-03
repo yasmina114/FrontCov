@@ -1,0 +1,194 @@
+
+
+
+
+<section class="tj-booking-frm">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-8 col-sm-8" [hidden]="t1">
+        <div class="tj-tabs">
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#point" data-toggle="tab">Votre annonce</a></li>
+
+          </ul>
+        </div>
+        <div class="tab-content">
+
+          <div class="tab-pane active" id="point">
+
+            <form class="booking-frm" [formGroup]="annonceForm"  (ngSubmit)="addannonce()" novalidate>
+              <div class="col-md-12 col-sm-12">
+                <div class="col-md-6 col-sm-6">
+                <label for="one_way"> Aller /Retour?
+                    <input type="checkbox" formControlName="aller_retour"  class="form-control"   style="position: relative; display: block; width: 25px; height: 25px; border: 1px solid #808080; background: #FFF;"  id="one_way" >
+                </label></div>
+                <div class="col-md-6 col-sm-6">
+                  <label for="two_way"> Chemin regulier?
+                    <input type="checkbox" formControlName="regulier"      class="form-control"  style="position: relative; display: block; width: 25px; height: 25px; border: 1px solid #808080;background: #FFF;" id="two_way" >
+
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-12 col-sm-12">
+                <strong>Adresse de départ</strong>
+                <div class="field-holder">
+
+
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input   name="lieu_depart"  #lieu_depart  class="form-control"    type="text"  placeholder="D’où partez-vous ?" required >
+
+
+
+</div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="field-holder">
+                  <span class="fas fa-calendar-alt" ></span>
+                  <input type="date" class="form-control" placeholder="yyyy-mm-dd"  formControlName="date_depart"  name="date_depart"  >
+
+                  <!--<span class="fas fa-calendar-alt"></span>-->
+                  <!--<input type="date"  class="form-control" formControlName="date_depart" placeholder="Date" useValueAsDate >-->
+                  <div *ngIf="submitted && f.date_depart.errors" class="invalid-feedback">
+                    <div *ngIf="f.date_depart.errors.required" class="errors" >Ce champ est obligatoire</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6"><div class="field-holder">
+                <span class="far fa-clock"></span>
+                <input type="time" class="form-control" name="heurDepart"  formControlName="heurDepart"      >
+                <div *ngIf="submitted && f.heurDepart.errors" class="invalid-feedback">
+                  <div *ngIf="f.heurDepart.errors.required" class="errors" >Ce champ est obligatoire</div>
+                </div>
+              </div>
+                </div>
+
+              <div class="col-md-12 col-sm-12">
+                <strong>Adresse d'arrivée</strong>
+                <div class="field-holder">
+
+
+                    <input  type="text"  class="form-control"  name="lieu_arrive" #lieu_arrive      placeholder="Où allez-vous ?" required>
+
+
+
+
+
+              </div>
+
+
+              </div>
+
+              <div class="col-md-12 col-sm-12" >
+                <a class="book-btn"  (click)="toggle()">L'étape Suivent <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+              </div>
+
+
+
+
+
+<br><br>
+
+
+        <div class="tab-content"  >
+
+
+<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+              <div class="col-md-12 col-sm-12">
+
+                <span>Prix Par Personne</span>
+                <div class="field-holder">
+                  <span class="fas fa-money-bill " ></span>
+                  <input type="number" class="form-control"  name="prix"  formControlName="prix" placeholder="Prix  en Dt" >
+                  <div *ngIf="submitted && f.prix.errors" class="invalid-feedback">
+                    <div *ngIf="f.prix.errors.required" class="errors" >Ce champ est obligatoire</div>
+                  </div>
+                </div>
+              </div>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <div class="col-md-12 col-sm-12">
+                <div class="field-holder">
+                  <span>Nombre de places proposées</span>
+                  <input type="number" class="form-control" formControlName="nbrplacesdisponible" name="nbrplacesdisponible"  placeholder="" >
+                  <div *ngIf="submitted && f.nbrplacesdisponible.errors" class="invalid-feedback">
+                    <div *ngIf="f.nbrplacesdisponible.errors.required" class="errors" >Ce champ est obligatoire</div>
+                  </div>
+                </div>
+              </div>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <div class="col-md-12 col-sm-12">
+                <div class="field-holder">
+              <span>    Avez-vous d'autres précisions à apporter sur votre trajet?</span>
+                  <input type="text" class="form-control" name="description"   placeholder="" formControlName="description">
+
+                </div>
+              </div>
+          <br>
+
+
+          <br>
+              <div class="col-md-12 col-sm-12">
+                <button type="submit" class="book-btn">Publier <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+              </div>
+
+        </div>
+           </form>
+          </div>
+
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" class="map-container">
+        <!--<agm-map    [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" style="width:100%;height: 500px;">-->
+          <!--<agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"-->
+                      <!--(dragEnd)="markerDragEnd($event)"></agm-marker>-->
+          <!--<agm-marker [latitude]="latitude1" [longitude]="longitude1" [markerDraggable]="true"-->
+                      <!--(dragEnd)="marker2($event)"></agm-marker>-->
+        <!--&lt;!&ndash;</agm-map>&ndash;&gt;-->
+
+
+          <!--<agm-direction  style="color:#000;" [origin]="origin" [destination]="destination">-->
+          <!--</agm-direction>-->
+        <!--</agm-map>-->
+        <!--<h5>Address: {{address}}</h5>-->
+        <!--<div>Latitude: {{latitude}}</div>-->
+        <!--<div>Longitude: {{longitude}}</div>-->
+        <!--<agm-map  [latitude]="lat"  [longitude]="lng"   style="width:100%;height: 600px;">-->
+
+          <!--<agm-marker  [latitude]="lat" [longitude]="lng"></agm-marker>-->
+        <!--</agm-map>-->
+
+        <mat-card fxFlex="100%"   style="width:100%;height: 600px;" class="map-card">
+          <agm-map (mapReady)="mapReady($event)" [latitude]="lat" [longitude]="lng" [zoom]="6"> </agm-map>
+        </mat-card>
+
+
+      </div>
+
+  </div>
+
+  </div>
+
+</section>
+
+

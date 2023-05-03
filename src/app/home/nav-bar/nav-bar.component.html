@@ -1,0 +1,286 @@
+<!--<div class="header-top">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-lg-12">-->
+<!--        <ul class="top-links">-->
+<!--          <li><i class="flaticon-support"></i><a href="#" title="">support center</a></li>-->
+<!--          <li><i class="flaticon-info"></i><a href="#" title="">Faq's</a></li>-->
+<!--        </ul>-->
+<!--        <div class="login-area">-->
+<!--          <ul>-->
+
+<!--            <li class="log-in">-->
+<!--              <a href="#" title="">-->
+<!--                <img src="images/resources/login-avatar.jpg" alt="">-->
+<!--              </a>-->
+<!--              <div class="login-dropdown">-->
+<!--                <span>William Words</span>-->
+<!--                <a href="#" title="">see profile</a>-->
+<!--                <ul>-->
+<!--                  <li><a href="#" title="">points <span class="badge">0</span></a></li>-->
+<!--                  <li><a href="#" title="">cars</a></li>-->
+<!--                  <li><a href="#" title="">balance</a></li>-->
+<!--                  <li><a href="#" title="">earning</a></li>-->
+<!--                  <li class="signout"><a href="#" title="">sign out <i class="fa fa-power-off"></i></a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>&lt;!&ndash; topbar &ndash;&gt;-->
+
+<div class="topbar">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <header>
+          <div class="logo">
+            <a><img src="assets/images/wassalnilogo.png" alt=""></a>
+          </div>
+          <nav>
+            <ul class="main-menu">
+              <li><a routerLink="">Accueil</a>
+
+              </li>
+              <li><a routerLink="/reclamation">Contactez Nous</a>
+
+              </li>
+              <li><a routerLink="/listannonce" title="">Rechercher</a>
+
+              </li>
+              <li><a routerLink="/ajoutannonce">Proposer un trajet</a>
+
+              </li>
+              <i class="flaticon-phone-call-1" style="font-family: blod"></i>&nbsp;
+              <span><em>28061711</em></span>
+
+
+            </ul>
+          </nav>
+          <div class="time-info">
+            <a class="btn btn-primary" style="size: 50px" href="#myModal" data-toggle="modal" *ngIf="!ison">Connexion <i
+              aria-hidden="true"></i></a>&nbsp;&nbsp;
+            <a class="btn btn-primary" href="register" style="size: 50px" *ngIf="!ison"> Inscription <i
+              aria-hidden="true"></i></a>
+            <a class="btn btn-primary" style="size: 50px" (click)="deconecter()" *ngIf="ison"> Deconnecter <i
+              aria-hidden="true"></i></a>
+
+          </div>
+        </header>
+      </div>
+    </div>
+  </div>
+</div><!-- topbar header -->
+
+<div class="responsive-header">
+  <div class="res-top">
+    <ul>
+      <li><a href="#" title="Home"><i class="flaticon-home"></i></a></li>
+      <li><a href="#" title="Faq's"><i class="flaticon-info"></i></a></li>
+      <li><a href="#" title="Support center"><i class="flaticon-support"></i></a></li>
+      <li><a href="#" title="Login"><i class="flaticon-unlocked"></i></a></li>
+      <li><a href="#" title="New register"><i class="flaticon-checked"></i></a></li>
+
+    </ul>
+  </div>
+  <div class="logomenu-bar">
+    <div class="logo"><a href="index.html" title=""><img src="assets/images/wassalnilogo.png" alt=""></a></div>
+    <span class="responsviemenu-btn"><i class="flaticon-menu-1"></i></span>
+  </div>
+  <div class="responsive-menu">
+    <span class="close-btn"><i class="flaticon-error-1"></i></span>
+    <ul>
+      <li><a href="index.html" title="">Home</a></li>
+      <li class="menu-item-has-children"><a href="#" title="">cars</a>
+        <ul class="sub-menu">
+          <li><a href="index-after-login.html" title="">page after login</a></li>
+          <li><a href="cars.html" title="">cars</a></li>
+          <li><a href="car-profile.html" title="">car profile</a></li>
+          <li><a href="car-detail.html" title="">cars detail</a></li>
+          <li><a href="create-route-notification.html" title="">route notification</a></li>
+          <li><a href="submit-car-intro.html" title="">Submit car introduction</a></li>
+          <li><a href="submit-car-for-rent.html" title="">submit car for rent</a></li>
+          <li><a href="submit-route.html" title="">submit car route</a></li>
+        </ul>
+      </li>
+      <li class="menu-item-has-children"><a href="#" title="">rides</a>
+        <ul class="sub-menu">
+          <li><a href="ride-listing.html" title="">ride listing</a></li>
+          <li><a href="ride-request.html" title="">ride request</a></li>
+          <li><a href="ride-detail.html" title="">ride detail</a></li>
+          <li><a href="ride-requests-list.html" title="">ride request list</a></li>
+        </ul>
+      </li>
+      <li class="menu-item-has-children"><a href="#" title="">leasing</a>
+        <ul class="sub-menu">
+          <li><a href="leasing.html" title="">Leasing Page</a></li>
+          <li><a href="leasing-car-step1.html" title="">leasing Step 1</a></li>
+          <li><a href="leasing-car-step2.html" title="">leasing step 2</a></li>
+        </ul>
+      </li>
+      <li class="menu-item-has-children"><a href="#" title="">profiles</a>
+        <ul class="sub-menu">
+          <li><a href="user-profile.html" title="">Profile user</a></li>
+          <li><a href="user-profile-v2.html" title="">Profile user v2</a></li>
+          <li><a href="my-profile.html" title="">My profile</a></li>
+          <li><a href="profile-balance.html" title="">profile balance</a></li>
+          <li><a href="profile-earning.html" title="">profile earning</a></li>
+          <li><a href="profile-edit.html" title="">profile edit page</a></li>
+          <li><a href="profile-invite-friend.html" title="">profile invite friend</a></li>
+          <li><a href="profile-points.html" title="">profile points</a></li>
+        </ul>
+      </li>
+      <li class="menu-item-has-children"><a href="#" title="">more pages</a>
+        <ul class="sub-menu">
+          <li><a href="login.html" title="">Login page</a></li>
+          <li><a href="register.html" title="">Register Page</a></li>
+          <li><a href="how-this-work.html" title="">how it's work</a></li>
+          <li><a href="faq.html" title="">faq's</a></li>
+          <li><a href="points.html" title="">poinst</a></li>
+          <li><a href="coming-soon.html" title="">Coming Soon</a></li>
+          <li><a href="404.html" title="">404 Page</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div><!-- Responsive Header -->
+
+<!--<header class="tj-header">-->
+<!--  &lt;!&ndash;Header Content Start&ndash;&gt;-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      &lt;!&ndash;Toprow Content Start&ndash;&gt;-->
+<!--      <div class="col-md-3 col-xs-12 col-sm-4">-->
+<!--        &lt;!&ndash;Logo Start&ndash;&gt;-->
+<!--        <div class="tj-logo">-->
+<!--          <h1><a >Fitri9k</a></h1>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;Logo End&ndash;&gt;-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-xs-12 col-sm-4">-->
+<!--        <div class="info_box">-->
+<!--          <i class="fa fa-home"></i>-->
+<!--          <div class="info_text">-->
+<!--            <span class="info_title">Address</span>-->
+<!--            <span></span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-xs-12 col-sm-4">-->
+<!--        <div class="info_box">-->
+<!--          <i class="fa fa-envelope"></i>-->
+<!--          <div class="info_text">-->
+<!--            <span class="info_title">Email </span>-->
+<!--            <span><a href="mailto:primecab@booking.com">fitri9k@gmail.com</a></span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-xs-12">-->
+<!--        <div class="phone_info">-->
+<!--          <div class="phone_icon">-->
+<!--            <i class="fas fa-phone-volume"></i>-->
+<!--          </div>-->
+<!--          <div class="phone_text">-->
+<!--            <span><a >+216 27 199 801</a></span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash;Toprow Content End&ndash;&gt;-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="tj-nav-row">-->
+<!--    <div class="container">-->
+<!--      <div class="row">-->
+<!--        &lt;!&ndash;Nav Holder Start&ndash;&gt;-->
+<!--        <div class="tj-nav-holder">-->
+<!--          &lt;!&ndash;Menu Holder Start&ndash;&gt;-->
+<!--          <nav class="navbar navbar-default">-->
+
+<!--            &lt;!&ndash; Navigation Content Start &ndash;&gt;-->
+<!--            <div class="collapse navbar-collapse" id="tj-navbar-collapse">-->
+<!--              <ul class="nav navbar-nav">-->
+<!--                <li class="dropdown"> <a href="" role="button" >Accueil<i class="fa fa-angle-down" aria-hidden="true"></i></a>-->
+
+<!--                </li>-->
+<!--                <li >-->
+<!--                  <a routerLink="/profiluser/{{this.iduser}}"  > {{this.nom}} &nbsp; {{this.prenom}}</a>-->
+<!--                </li>-->
+<!--                <li >-->
+<!--                  <a  routerLink="notification"   >-->
+<!--                    <i class="fa fa-bell" aria-hidden="true"></i> Notifications <span class="badge" >{{listreservationatend?.length}}</span> </a>-->
+
+
+<!--</li>-->
+<!--                <li >-->
+<!--                <a  routerLink="notificationpassager" >-->
+<!--                  <i class="fa fa-bell" aria-hidden="true"  ></i> Notifications <span class="badge" >{{listreservationpassager?.length}}</span> </a>-->
+<!--              </li>-->
+<!--                <li class="dropdown"> <a href="reclamation" role="button" >Contactez Nous<i class="fa fa-angle-down" aria-hidden="true"></i></a>-->
+
+<!--                </li>-->
+<!--              </ul>-->
+
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Navigation Content Start &ndash;&gt;-->
+<!--          </nav>-->
+<!--          &lt;!&ndash;Menu Holder End&ndash;&gt;-->
+<!--          <br>-->
+<!--          <a class="btn btn-primary" style="size: 50px"  href="#myModal"  data-toggle="modal" *ngIf="!ison">Connexion <i aria-hidden="true"></i></a>&nbsp;&nbsp;-->
+<!--          <a class="btn btn-primary" href="register" style="size: 50px" *ngIf="!ison" > Inscription <i aria-hidden="true"></i></a>-->
+<!--          <a class="btn btn-primary"  style="size: 50px" (click)="deconecter()" *ngIf="ison"> Deconnecter <i aria-hidden="true"></i></a>-->
+
+<!--        </div>&lt;!&ndash;Nav Holder End&ndash;&gt;-->
+<!--        <br>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</header>-->
+
+
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title"> Connexion</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onlogin()">
+          <div class="form-group">
+            <input type="text" formControlName="username" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Nom d'utilisateur est obligatoire</div>
+
+            </div>
+
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="*********" formControlName="password" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+
+
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Mot de passe obligatoire</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Connexion</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#">Mot de passe oublier ?</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

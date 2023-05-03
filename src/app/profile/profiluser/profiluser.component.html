@@ -1,0 +1,546 @@
+<section class="tj-account-frm" *ngIf="role==='CONDUCTEUR'">
+
+
+  <section>
+    <div class="space">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="profile">
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="profile-dp">
+                    <figure><img src="http://localhost:9001/upload/files/{{conducteurnoter?.photo}}" alt=""></figure>
+                    <div class="profile-info">
+                      <span class="profile-name">{{conducteurnoter?.username}}</span>
+                      <p>{{conducteurnoter?.genre}}</p>
+
+                      <ul class="stars-rating">
+                        <star-rating [starType]="'svg'" [rating]='conducteurnoter?.note'></star-rating>
+                      </ul>
+                      <ins>{{totalavis}} Reviews</ins>
+                    </div>
+                    <ul class="verification">
+                      <li><i class="flaticon-world"></i> <strong>Age</strong>
+                        :{{calculage(conducteurnoter?.birthdate)}}</li>
+                      <li><i class="flaticon-tick"></i> Adress: {{conducteurnoter?.adress}}</li>
+                      <li><i class="flaticon-tick"></i>Numéro de téléphone vérifié</li>
+                    </ul>
+
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                  <div class="profile-bg">
+
+
+                    <div class="tab-content profile">
+                      <div class="tab-pane active fade show " id="link1">
+                        <div class="ride-request">
+                          <ul>
+                            <li>Nom et
+                              Prenom<span>  {{conducteurnoter?.firstName}}  {{conducteurnoter?.lastName}}</span></li>
+                            <li>Email<span>{{conducteurnoter?.email}}</span></li>
+                            <li>Numero Telphone<span>{{conducteurnoter?.tel}}</span></li>
+                            <li>Numero Cart Identitée<span>{{conducteurnoter?.cin}}</span></li>
+                            <li>Numero de Permis<span>{{conducteurnoter?.permis}}</span></li>
+
+                          </ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                  <div class="sidebar right">
+                    <div class="note-box">
+                      <span data-toggle="modal"
+                            data-target="#fluidModalRightInfo"><i class="flaticon-volkswagen-car-side-view"></i>Ajoutez une voiture
+</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- points section -->
+  <div class="container" *ngIf="!myVariable">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <form class="account-frm" (ngSubmit)="f.form.valid&& modifierconducteur()" #f="ngForm">
+              <div class="col-md-12 col-sm-12">
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Nom</label>
+                    <span class="far fa-user"></span>
+                    <input type="text" placeholder="{{conducteur.username}}" class="form-control" name="username"
+                           [(ngModel)]="conducteur.username" #username="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" required/>
+                    <div *ngIf="f.submitted && username.invalid" class="invalid-feedback">
+                      <div *ngIf="username.errors">Nom d'utilisateur Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Prenom</label>
+                    <span class="far fa-user"></span>
+                    <input type="text" placeholder="{{conducteur.lastName}}" class="form-control" name="lastName"
+                           [(ngModel)]="conducteur.lastName" #lastName="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required/>
+                    <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                      <div *ngIf="lastName.errors">Prenom Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Genre</label>
+                    <select name="genre" [(ngModel)]="conducteur.genre" #genre="ngModel" class="form-control"
+                            [ngClass]="{ 'is-invalid': f.submitted && genre.invalid }">
+
+                      <option value="homme">Homme</option>
+                      <option value="femme">Femme</option>
+                    </select>
+                    <div *ngIf="f.submitted && genre.invalid" class="invalid-feedback">
+                      <div *ngIf="genre.errors">Il faut indiquer votre genre</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Date de naissance</label>
+                    <span class="icon-phone icomoon"></span>
+                    <input placeholder="{{conducteur.birthdate}}" type="date" class="form-control"
+                           [(ngModel)]="conducteur.birthdate" name=" birthdate" #birthdate="ngModel"
+                           [ngClass]="{ 'is-invalid':f. submitted && birthdate.invalid }" required/>
+                    <div *ngIf="f.submitted && birthdate.invalid" class="invalid-feedback">
+                      <div *ngIf="birthdate.errors.required">Date de naissance Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Email</label>
+                    <span class="far fa-envelope"></span>
+                    <input type="email" name="email_id" placeholder="{{conducteur.email}}" class="form-control"
+                           name="email" [(ngModel)]="conducteur.email" #email="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email/>
+                    <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                      <div *ngIf="email.errors.required">Email Obligatoire</div>
+                      <div *ngIf="email.errors.email">address mail invalid</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Numero Permis</label>
+                    <span class="fas fa-lock"></span>
+                    <input type="text" placeholder="{{conducteur.permis}}" class="form-control"
+                           [(ngModel)]="conducteur.permis" name="permis" #permis="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && permis.invalid }" required/>
+                    <div *ngIf="f.submitted && permis.invalid" class="invalid-feedback">
+                      <div *ngIf="permis.errors.required">Permis Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Numero Cart Identité</label>
+
+                    <input type="text" placeholder="{{conducteur.cin}}" [(ngModel)]="conducteur.cin" name="cin"
+                           #cin="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cin.invalid }" required/>
+                    <div *ngIf="f.submitted && cin.invalid" class="invalid-feedback">
+                      <div *ngIf="cin.errors.required"> Numero Cart cin</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Adress</label>
+                    <span class="fas fa-lock"></span>
+                    <input type="text" placeholder="{{conducteur.adress}}" class="form-control"
+                           [(ngModel)]="conducteur.adress" name="adress" #adress="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && adress.invalid }" required/>
+                    <div *ngIf="f.submitted && adress.invalid" class="invalid-feedback">
+                      <div *ngIf="adress.errors.required">Adress Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Numero Telphone</label>
+                    <span class="icon-phone icomoon"></span>
+                    <input type="tel" placeholder="{{conducteur.tel}}" class="form-control" [(ngModel)]="conducteur.tel"
+                           name="tel" #tel="ngModel" [ngClass]="{ 'is-invalid':f. submitted && tel.invalid }" required/>
+                    <div *ngIf="f.submitted && tel.invalid" class="invalid-feedback">
+                      <div *ngIf="tel.errors.required">Telphone Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="account-field">
+                  <label>Profile Image {{this.photo}}</label>
+                  <input id="file" type='file' name="file" (change)="recuperFile($event)"/>
+
+                  <span class="limit">Maximum file size : 6MB </span>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <button type="submit" class="save-btn">Modifier <i class="fa fa-arrow-circle-right"
+                                                                   aria-hidden="true"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+<div class="modal fade right" id="fluidModalRightInfo" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel"
+     aria-hidden="true" *ngIf="role==='CONDUCTEUR'">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <!--Content-->
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ajouter votre voiture</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form class="account-frm" #f="ngForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="account-field">
+                <label>Marque</label>
+                <select name="marque"
+                        class="form-control" (change)="getmodelbymarque()" [(ngModel)]="idmarque" #marque="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && marque.invalid }" required>
+
+                  <option value={{e.id}} *ngFor="let e of listMarques">{{e.nom}}</option>
+
+                </select>
+
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="account-field">
+                <label>Model</label>
+                <select name="model" [(ngModel)]="voiture.model" #model="ngModel" class="form-control"
+                        [ngClass]="{ 'is-invalid': f.submitted && model.invalid }" required>
+
+                  <option value={{model.nom}} *ngFor="let model of listmodel">{{model.nom}}</option>
+
+                </select>
+
+              </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="account-field">
+                <label> plaque_imatriculation</label>
+                <input placeholder="" type="text" class="form-control" name="plaque_imatriculation"
+                       [(ngModel)]="voiture.plaque_imatriculation" #plaque_imatriculation="ngModel"
+                       [ngClass]="{ 'is-invalid': f.submitted && plaque_imatriculation.invalid }" required>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="account-field">
+                <label>Date_imatriculation</label>
+                <input type="date" placeholder="" class="form-control" name="date_imatriculation"
+                       [(ngModel)]="voiture.date_imatriculation" #date_imatriculation="ngModel"
+                       [ngClass]="{ 'is-invalid': f.submitted && date_imatriculation.invalid }" required>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+
+            <div class="account-field">
+              <div class="col-md-6">
+                <label>type</label>
+                <!--<label> Compacte</label>-->
+                <!--<input style="size: 20px" type="radio" class="form-control" name="type" [(ngModel)]="voiture.type" #type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && type.invalid }" required/>-->
+                <!--<label> Berline  </label>-->
+                <!--<input type="radio" class="form-control" name="type" [(ngModel)]="voiture.type" #type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && type.invalid }" required/>-->
+                <!--<label> Cabriolet</label>-->
+                <!--<input type="radio" class="form-control" name="type" [(ngModel)]="voiture.type" #type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && type.invalid }" required/>-->
+                <!--<label> Break  </label>-->
+                <!--<input type="radio" class="form-control" name="type" [(ngModel)]="voiture.type" #type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && type.invalid }" required/>-->
+                <!--</div>-->
+                <!--<div class="col-md- col-sm-4">-->
+                <!--<label> Break</label>-->
+                <!--<input type="radio" class="form-control" name="type" [(ngModel)]="voiture.type" #type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && type.invalid }" required/>-->
+                <!--<label> 4×4</label>-->
+                <!--<input type="radio" class="form-control" name="type" [(ngModel)]="voiture.type" #type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && type.invalid }" required/>-->
+                <!--<label> Monospace</label>-->
+                <!--<input type="radio" class="form-control" name="type" [(ngModel)]="voiture.type" #type="ngModel" [ngClass]="{ 'is-invalid': f.submitted && type.invalid }" required/>-->
+
+
+                <div class="container">
+                  <div class="row">
+
+
+                    <div >
+                      <div class="btn-group  btn-group-justified" >
+                        <div class="col-md-2 col-sm-2" *ngFor="let typevoiture of listType">
+
+
+{{typevoiture.name}}
+
+                            <input type="radio" class="form-control" [value]="typevoiture?.name" name="type" [(ngModel)]="voiture.type"
+                                   #type="ngModel"  [ngClass]="{ 'is-invalid': f.submitted && type.invalid }" required/>
+
+
+</div>
+
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="account-field">
+                <label> Couleur</label>
+                <input type="text" placeholder="" class="form-control" name="couleur" [(ngModel)]="voiture.couleur"
+                       #couleur="ngModel" [ngClass]="{ 'is-invalid': f.submitted && couleur.invalid }" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="account-field">
+                <label>Nombre de places </label>
+
+                <input type="number" placeholder="" class="form-control" name="nbrplacesdisponible"
+                       [(ngModel)]="voiture.nbrplacesdisponible" #nbrplacesdisponible="ngModel"
+                       [ngClass]="{ 'is-invalid': f.submitted && nbrplacesdisponible.invalid }" required>
+
+              </div>
+            </div>
+          </div>
+
+          <!--Footer-->
+          <div class="modal-footer justify-content-center">
+            <button type="submit" (click)="ajoutvoiture()" data-dismiss="modal" class="btn btn-primary">AJOUTER
+              <i class="far fa-gem ml-1 text-white"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Annuler</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="tj-account-frm" *ngIf="role==='PASSAGER'">
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+
+        <div class="tab-content">
+
+
+          <div class="tab-pane active">
+
+
+            <strong>{{conducteur?.username}}</strong><br>
+            <strong>{{conducteur?.genre}}</strong>
+
+
+            <div class="col-md-6 col-sm-6">
+              <div class="account-field">
+                <label>Nom et Prenom</label>
+                <span class="far fa-user">:</span>
+                {{conducteur?.firstName}}  {{conducteur?.lastName}}
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+              <div class="account-field">
+                <label>Numero Telphone</label>
+                <span class="icon-phone icomoon">:</span>
+                {{conducteur?.tel}}
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="account-field">
+                <label>Email</label>
+                <span class="far fa-envelope">:</span>
+                {{conducteur?.email}}
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="account-field">
+                <label>Adress</label>
+                {{conducteur?.adress}}
+              </div>
+            </div>
+
+
+            <div class="col-md-4 col-sm-4">
+              <div class="account-field">
+                <label>Age</label>
+                :{{calculage(conducteur?.birthdate)}}
+
+              </div>
+            </div>
+
+
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <button type="submit" class="btn-info" (click)="show()">modifier Votre Profile</button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container" *ngIf="!myVariable">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+
+        <div class="tab-content">
+          <div class="tab-pane active">
+            <form class="account-frm" (ngSubmit)="f.form.valid&& modifierpassager()" #f="ngForm">
+              <div class="col-md-12 col-sm-12">
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Nom</label>
+                    <span class="far fa-user"></span>
+                    <input type="text" placeholder="{{conducteur.username}}" class="form-control" name="username"
+                           [(ngModel)]="conducteur.username" #username="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" required/>
+                    <div *ngIf="f.submitted && username.invalid" class="invalid-feedback">
+                      <div *ngIf="username.errors.required">Nom d'utilisateur Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Prenom</label>
+                    <span class="far fa-user"></span>
+                    <input type="text" placeholder="{{conducteur.lastName}}" class="form-control" name="lastName"
+                           [(ngModel)]="conducteur.lastName" #lastName="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required/>
+                    <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                      <div *ngIf="lastName.errors.required">Prenom Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Genre</label>
+                    <select name="genre" [(ngModel)]="conducteur.genre" #genre="ngModel" class="form-control"
+                            [ngClass]="{ 'is-invalid': f.submitted && genre.invalid }">
+
+                      <option value="homme">Homme</option>
+                      <option value="femme">Femme</option>
+                    </select>
+                    <div *ngIf="f.submitted && genre.invalid" class="invalid-feedback">
+                      <div *ngIf="genre.errors.required">Il faut indiquer votre genre</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Date de naissance</label>
+                    <span class="icon-phone icomoon"></span>
+                    <input placeholder="{{conducteur.birthdate}}" type="date" class="form-control"
+                           [(ngModel)]="conducteur.birthdate" name=" birthdate" #birthdate="ngModel"
+                           [ngClass]="{ 'is-invalid':f. submitted && birthdate.invalid }" required/>
+                    <div *ngIf="f.submitted && birthdate.invalid" class="invalid-feedback">
+                      <div *ngIf="birthdate.errors.required">Date de naissance Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Numero Cart Identité</label>
+
+                    <input type="text" placeholder="{{conducteur.cin}}" [(ngModel)]="conducteur.cin" name="cin"
+                           #cin="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cin.invalid }" required/>
+                    <div *ngIf="f.submitted && cin.invalid" class="invalid-feedback">
+                      <div *ngIf="cin.errors.required"> Numero Cart cin</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Adress</label>
+                    <span class="fas fa-lock"></span>
+                    <input type="text" placeholder="{{conducteur.adress}}" class="form-control"
+                           [(ngModel)]="conducteur.adress" name="adress" #adress="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && adress.invalid }" required/>
+                    <div *ngIf="f.submitted && adress.invalid" class="invalid-feedback">
+                      <div *ngIf="adress.errors.required">Adress Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <div class="account-field">
+                    <label>Numero Telphone</label>
+                    <span class="icon-phone icomoon"></span>
+                    <input type="tel" placeholder="{{conducteur.tel}}" class="form-control" [(ngModel)]="conducteur.tel"
+                           name="tel" #tel="ngModel" [ngClass]="{ 'is-invalid':f. submitted && tel.invalid }" required/>
+                    <div *ngIf="f.submitted && tel.invalid" class="invalid-feedback">
+                      <div *ngIf="tel.errors.required">Telphone Obligatoire</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                <button type="submit" class="save-btn">Modifier <i class="fa fa-arrow-circle-right"
+                                                                   aria-hidden="true"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+

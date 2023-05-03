@@ -1,0 +1,274 @@
+<section class="tj-account-frm">
+      <div class="col-md-12 col-sm-12">
+
+        <div class="tab-content">
+
+          <div class="tab-pane active" id="confirm_booking">
+
+
+            <div class="col-md-6 ">
+
+
+              <div class="account-field">
+
+
+                <img src="http://localhost:9001/upload/files/{{conducteur?.photo}}" height="250" width="245">
+              </div>
+              <strong>{{conducteur?.username}}</strong><br>
+              <strong>{{conducteur?.genre}}</strong>
+
+            </div>
+
+
+
+
+            <div class="col-md-6 col-sm-6">
+              <div class="account-field">
+                <label>Nom et Prenom</label>
+                <span class="far fa-user">:</span>
+                {{conducteur?.firstName}}  {{conducteur?.lastName}}
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+              <div class="account-field">
+                <label>Numero Telphone</label>
+                <span class="icon-phone icomoon">:</span>
+                {{conducteur?.tel}}
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="account-field">
+                <label>Email</label>
+                <span class="far fa-envelope">:</span>
+                {{conducteur?.email}}
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="account-field">
+                <label>Adress</label>
+                {{conducteur?.adress}}
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="account-field">
+                <label>Numero de Permis</label>
+                {{conducteur?.permis}}
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="account-field">
+                <label>Numero Cart Identitée</label>
+                <span class="far fa-id-card"></span>:{{conducteur?.cin}}
+
+              </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4">
+              <div class="account-field">
+                <label>Age</label>
+               :{{calculage(conducteur?.birthdate)}}
+
+              </div>
+            </div>
+<div class="col-xl-12" *ngIf="isPassager()">
+            <form [formGroup]="form" (ngSubmit)="addavis()" >
+              <star-rating-control    (starClickChange)="addavis()"  formControlName="raiting"></star-rating-control>
+
+
+            </form>
+</div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+</section>
+
+
+
+<!--<section class="tj-account-frm" *ngIf="isPassager()" >-->
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-12 col-sm-12">-->
+
+        <!--<div class="tab-content">-->
+
+          <!--<div class="tab-pane active" >-->
+
+
+            <!--<div class="col-md-6 ">-->
+
+
+
+              <!--<strong>{{conducteur?.username}}</strong><br>-->
+              <!--<strong>{{conducteur?.genre}}</strong>-->
+
+            <!--</div>-->
+
+            <!--<div class="col-md-6 col-sm-6">-->
+              <!--<div class="account-field">-->
+                <!--<label>Nom et Prenom</label>-->
+                <!--<span class="far fa-user">:</span>-->
+                <!--{{conducteur?.firstName}}  {{conducteur?.lastName}}-->
+              <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="col-md-6 col-sm-6">-->
+              <!--<div class="account-field">-->
+                <!--<label>Numero Telphone</label>-->
+                <!--<span class="icon-phone icomoon">:</span>-->
+                <!--{{conducteur?.tel}}-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-6 col-sm-6">-->
+              <!--<div class="account-field">-->
+                <!--<label>Email</label>-->
+                <!--<span class="far fa-envelope">:</span>-->
+                <!--{{conducteur?.email}}-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-4 col-sm-4">-->
+              <!--<div class="account-field">-->
+                <!--<label>Adress</label>-->
+                <!--{{conducteur?.adress}}-->
+              <!--</div>-->
+            <!--</div>-->
+
+
+
+
+          <!--</div>-->
+          <!--<div class="col-md-4 col-sm-4">-->
+            <!--<button type="submit" class="btn-info" (click)="show()">modifier Votre Profile</button>-->
+
+          <!--</div>-->
+        <!--</div>-->
+
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+
+  <!--<div class="container" *ngIf="!myVariable">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-12 col-sm-12">-->
+
+        <!--<div class="tab-content">-->
+          <!--<div class="tab-pane active">-->
+            <!--<form class="account-frm" (ngSubmit)="f.form.valid&& modifierpassager()" #f="ngForm">-->
+              <!--<div class="col-md-12 col-sm-12">-->
+                <!--<div class="col-md-4 col-sm-4">-->
+                  <!--<div class="account-field">-->
+                    <!--<label>Nom</label>-->
+                    <!--<span class="far fa-user"></span>-->
+                    <!--<input type="text" placeholder="{{conducteur.username}}" class="form-control" name="username"-->
+                           <!--[(ngModel)]="conducteur.username" #username="ngModel"-->
+                           <!--[ngClass]="{ 'is-invalid': f.submitted && username.invalid }" required/>-->
+                    <!--<div *ngIf="f.submitted && username.invalid" class="invalid-feedback">-->
+                      <!--<div *ngIf="username.errors.required">Nom d'utilisateur Obligatoire</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-md-4 col-sm-4">-->
+                  <!--<div class="account-field">-->
+                    <!--<label>Prenom</label>-->
+                    <!--<span class="far fa-user"></span>-->
+                    <!--<input type="text" placeholder="{{conducteur.lastName}}" class="form-control" name="lastName"-->
+                           <!--[(ngModel)]="conducteur.lastName" #lastName="ngModel"-->
+                           <!--[ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required/>-->
+                    <!--<div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">-->
+                      <!--<div *ngIf="lastName.errors.required">Prenom Obligatoire</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-md-4 col-sm-4">-->
+                  <!--<div class="account-field">-->
+                    <!--<label>Genre</label>-->
+                    <!--<select name="genre" [(ngModel)]="conducteur.genre" #genre="ngModel" class="form-control"-->
+                            <!--[ngClass]="{ 'is-invalid': f.submitted && genre.invalid }">-->
+
+                      <!--<option value="homme">Homme</option>-->
+                      <!--<option value="femme">Femme</option>-->
+                    <!--</select>-->
+                    <!--<div *ngIf="f.submitted && genre.invalid" class="invalid-feedback">-->
+                      <!--<div *ngIf="genre.errors.required">Il faut indiquer votre genre</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="col-md-12 col-sm-12">-->
+                <!--<div class="col-md-4 col-sm-4">-->
+                  <!--<div class="account-field">-->
+                    <!--<label>Date de naissance</label>-->
+                    <!--<span class="icon-phone icomoon"></span>-->
+                    <!--<input placeholder="{{conducteur.birthdate}}" type="date" class="form-control"-->
+                           <!--[(ngModel)]="conducteur.birthdate" name=" birthdate" #birthdate="ngModel"-->
+                           <!--[ngClass]="{ 'is-invalid':f. submitted && birthdate.invalid }" required/>-->
+                    <!--<div *ngIf="f.submitted && birthdate.invalid" class="invalid-feedback">-->
+                      <!--<div *ngIf="birthdate.errors.required">Date de naissance Obligatoire</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+
+              <!--</div>-->
+              <!--<div class="col-md-12 col-sm-12">-->
+                <!--<div class="col-md-4 col-sm-4">-->
+                  <!--<div class="account-field">-->
+                    <!--<label>Numero Cart Identité</label>-->
+
+                    <!--<input type="text" placeholder="{{conducteur.cin}}" [(ngModel)]="conducteur.cin" name="cin"-->
+                           <!--#cin="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cin.invalid }" required/>-->
+                    <!--<div *ngIf="f.submitted && cin.invalid" class="invalid-feedback">-->
+                      <!--<div *ngIf="cin.errors.required"> Numero Cart cin</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-md-4 col-sm-4">-->
+                  <!--<div class="account-field">-->
+                    <!--<label>Adress</label>-->
+                    <!--<span class="fas fa-lock"></span>-->
+                    <!--<input type="text" placeholder="{{conducteur.adress}}" class="form-control"-->
+                           <!--[(ngModel)]="conducteur.adress" name="adress" #adress="ngModel"-->
+                           <!--[ngClass]="{ 'is-invalid': f.submitted && adress.invalid }" required/>-->
+                    <!--<div *ngIf="f.submitted && adress.invalid" class="invalid-feedback">-->
+                      <!--<div *ngIf="adress.errors.required">Adress Obligatoire</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-md-4 col-sm-4">-->
+                  <!--<div class="account-field">-->
+                    <!--<label>Numero Telphone</label>-->
+                    <!--<span class="icon-phone icomoon"></span>-->
+                    <!--<input type="tel" placeholder="{{conducteur.tel}}" class="form-control" [(ngModel)]="conducteur.tel"-->
+                           <!--name="tel" #tel="ngModel" [ngClass]="{ 'is-invalid':f. submitted && tel.invalid }" required/>-->
+                    <!--<div *ngIf="f.submitted && tel.invalid" class="invalid-feedback">-->
+                      <!--<div *ngIf="tel.errors.required">Telphone Obligatoire</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+             <!---->
+              <!--<div class="col-md-6 col-sm-6">-->
+                <!--<button type="submit" class="save-btn">Modifier <i class="fa fa-arrow-circle-right"-->
+                                                                   <!--aria-hidden="true"></i></button>-->
+              <!--</div>-->
+            <!--</form>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+
+<!--</section>-->
